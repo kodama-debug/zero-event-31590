@@ -502,7 +502,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
   <div class="wrap">
     <p class="eyebrow rv">HIGHLIGHTS</p>
     <h2 class="h2 rv rv-d1">この家の、<br>3つの見どころ。</h2>
-    <p class="lead rv rv-d2">写真は、触ると少しだけ反応します。気になる場所を、ぜひ見つけてみてください。</p>
 
     <div class="pt-list">
       <!-- 01 -->
@@ -515,10 +514,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
           <p class="pt-label">POINT 01</p>
           <h3><em>光を導く</em>2階リビング</h3>
           <p>零の家の多くは、南北の奥行きを三間（5,460mm）にして、冬の日差しを家全体に届けています。この住まいの奥行きはその倍近く。2階のバルコニーが、北側の奥まで光を届けています。</p>
-          <div class="depth" id="depth">
-            <div class="depth-row"><span>よくある零の家</span><div class="depth-bar std"><b>5,460mm</b></div></div>
-            <div class="depth-row"><span>この家</span><div class="depth-bar this"><b>約2倍の奥行き</b></div></div>
-          </div>
         </div>
       </article>
       <!-- 02 -->
@@ -543,19 +538,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
           <p class="pt-label">POINT 03</p>
           <h3>趣味がひろがる<br><em>1階の土間スペース</em></h3>
           <p>ペレットストーブを置いた1階の土間。登山用品やサーフボード、DIYの道具までしまえます。</p>
-          <div class="gear">
-            <p class="q">あなたなら、この土間に何をしまう？</p>
-            <div class="gear-list" id="gear">
-              <button aria-pressed="false" data-i="🎒">登山用品</button>
-              <button aria-pressed="false" data-i="🏄">サーフボード</button>
-              <button aria-pressed="false" data-i="🧰">DIY道具</button>
-              <button aria-pressed="false" data-i="🚲">自転車</button>
-              <button aria-pressed="false" data-i="⛺">キャンプ道具</button>
-              <button aria-pressed="false" data-i="🎣">釣り道具</button>
-            </div>
-            <div class="shelf" id="shelf" aria-live="polite"></div>
-            <p class="shelf-msg" id="shelfMsg"></p>
-          </div>
         </div>
       </article>
     </div>
@@ -885,18 +867,6 @@ const toggleStove = () => {
 };
 doma.addEventListener('click', toggleStove);
 doma.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStove(); } });
-
-const shelf = $('#shelf'), shelfMsg = $('#shelfMsg');
-$$('#gear button').forEach(b => b.addEventListener('click', () => {
-  const on = b.getAttribute('aria-pressed') !== 'true';
-  b.setAttribute('aria-pressed', on);
-  shelf.innerHTML = '';
-  const sel = $$('#gear button[aria-pressed=true]');
-  sel.forEach(x => { const s = document.createElement('span'); s.textContent = x.dataset.i; s.title = x.textContent; shelf.appendChild(s); });
-  shelfMsg.textContent = sel.length === 0 ? '' :
-    sel.length < 3 ? `${sel.map(x=>x.textContent).join('・')}、土間ならそのまましまえます。` :
-    sel.length < 6 ? 'まだまだ入ります。実際の広さは見学会で！' : '全部しまえちゃう…？ ぜひ実物で確かめてください！';
-}));
 
 /* ---------- ギャラリーの拡大 ---------- */
 const items = $$('.gal-item'), lb = $('#lb'), lbImg = $('img', lb);
