@@ -200,28 +200,6 @@ section{position:relative}
 @keyframes drop{from{transform:translateY(-30px);opacity:0}}
 .shelf-msg{font-size:13px;color:var(--orange);font-weight:700;margin-top:8px;min-height:1.6em}
 
-/* ===== sun simulator ===== */
-.sim{background:linear-gradient(180deg,#22323f,#3E576D);color:#fff;overflow:hidden}
-.sim .lead{color:rgba(255,255,255,.8)}
-.sim-box{margin-top:48px;display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:center}
-.sim-svg{background:linear-gradient(180deg,#9cc4e4,#dbeaf3 70%);border-radius:24px;overflow:hidden;transition:background 1s}
-.sim-svg svg{width:100%;display:block}
-.sim-ctl label{display:block;font-size:13px;letter-spacing:.1em;opacity:.8;margin-bottom:10px}
-.season{display:flex;justify-content:space-between;font-size:12px;margin-top:8px;opacity:.85}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(90deg,#F6B04A,#fff 50%,#9cc4e4);outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--orange);border:4px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:grab}
-input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--orange);border:4px solid #fff;cursor:grab}
-.meter{margin-top:28px;display:grid;gap:14px}
-.meter div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:14px 18px}
-.meter small{display:block;font-size:12px;opacity:.75}
-.meter b{font-family:var(--en);font-size:34px;font-weight:500;color:var(--orange-l)}
-.meter b span{font-size:14px;margin-left:4px;color:#fff}
-.sim-note{margin-top:18px;font-size:13px;line-height:1.7;opacity:.85;min-height:4.5em}
-.chips{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.chips button{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 14px;font-size:12px}
-.chips button:hover{background:rgba(255,255,255,.15)}
-@media all{.sim-box{grid-template-columns:1fr}.meter{grid-template-columns:1fr 1fr}.meter b{font-size:26px}}
-
 /* ===== gallery (horizontal) ===== */
 .gal{height:300vh;background:var(--ink);color:#fff}
 .gal-stick{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
@@ -389,8 +367,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
 .pt{margin-top:72px;gap:22px}
 .pt-no{font-size:90px}
 .pt-body h3{font-size:22px}
-.sim-svg{border-radius:16px}
-.sim-box{margin-top:28px;gap:22px}
 .info-grid{gap:14px;margin-top:32px}
 .c-access iframe{min-height:240px}
 .form-wrap{margin-top:28px;border-radius:22px}
@@ -432,7 +408,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
   <a href="#top" class="logo" aria-label="建築工房 零"><b>零</b><span>建築工房 零</span></a>
   <nav class="hd-nav">
     <a href="#points">見どころ</a>
-    <a href="#sim">光の体験</a>
     <a href="#info">開催概要</a>
     <a href="#reserve">予約</a>
     <a class="btn btn-o js-official" href="https://zerocraft.com/event/31590#eventForm">今すぐ予約 <span class="arw">→</span></a>
@@ -583,74 +558,6 @@ body{position:relative;max-width:480px;margin:0 auto;box-shadow:0 0 80px rgba(0,
           </div>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SUN SIMULATOR ============ -->
-<section class="sim sec" id="sim">
-  <div class="wrap">
-    <p class="eyebrow rv">PLAY ／ 光のシミュレーター</p>
-    <h2 class="h2 rv rv-d1" style="color:#fff">太陽を動かして、<br>光の届き方を見てみよう。</h2>
-    <p class="lead rv rv-d2">家を南北に切った断面図です。季節のつまみを動かすと、お昼の太陽の高さが変わります。冬の低い光がバルコニーを通って、北側の奥まで届く様子をごらんください。<br><small style="opacity:.7">※しくみを伝えるためのイメージ図です。実際の寸法・日当たりとは異なります。</small></p>
-
-    <div class="sim-box rv">
-      <div class="sim-svg" id="simSky">
-        <svg viewBox="0 0 800 400" id="simSvg" role="img" aria-label="家の断面図に太陽の光が差し込むイメージ">
-          <!-- ground -->
-          <rect x="0" y="340" width="800" height="60" fill="#8f7a5e"/>
-          <rect x="0" y="340" width="800" height="4" fill="#6e5c45"/>
-          <!-- south neighbor -->
-          <rect x="20" y="130" width="110" height="210" fill="#7d8b97"/>
-          <g fill="#a9b6c1"><rect x="36" y="150" width="22" height="30"/><rect x="88" y="150" width="22" height="30"/><rect x="36" y="210" width="22" height="30"/><rect x="88" y="210" width="22" height="30"/><rect x="36" y="270" width="22" height="30"/><rect x="88" y="270" width="22" height="30"/></g>
-          <text x="75" y="122" text-anchor="middle" font-size="13" fill="#2B3F51" font-weight="700">南側の建物</text>
-          <!-- house interior -->
-          <rect x="178" y="150" width="494" height="190" fill="#fbf6ec"/>
-          <rect x="360" y="150" width="110" height="90" fill="none"/>
-          <g id="rays"></g>
-          <g id="lit"></g>
-          <!-- house solids -->
-          <g fill="#3E576D">
-            <rect x="162" y="140" width="198" height="10"/>
-            <rect x="470" y="140" width="218" height="10"/>
-            <rect x="170" y="240" width="510" height="8"/>
-            <rect x="170" y="150" width="8" height="10"/>
-            <rect x="170" y="235" width="8" height="35"/>
-            <rect x="170" y="330" width="8" height="10"/>
-            <rect x="672" y="150" width="8" height="190"/>
-          </g>
-          <!-- glass -->
-          <g stroke="#9fd0ee" stroke-width="3" opacity=".9">
-            <line x1="174" y1="160" x2="174" y2="235"/><line x1="174" y1="270" x2="174" y2="330"/>
-            <line x1="360" y1="150" x2="360" y2="240"/><line x1="470" y1="150" x2="470" y2="240"/>
-          </g>
-          <rect x="360" y="232" width="110" height="8" fill="#C89B6A"/>
-          <!-- labels -->
-          <g font-size="13" fill="#3E576D" font-weight="700" text-anchor="middle">
-            <text x="268" y="200">2F リビング</text>
-            <text x="415" y="200" fill="#8a6a3c">バルコニー</text>
-            <text x="571" y="200">2F 北側</text>
-            <text x="425" y="300">1F 土間・個室</text>
-            <text x="740" y="330" fill="#2B3F51">北側道路</text>
-          </g>
-          <text x="740" y="40" font-size="12" fill="#2B3F51" text-anchor="middle" font-family="Jost">N →</text>
-          <text x="40" y="390" font-size="12" fill="#fff" font-family="Jost">← S</text>
-          <!-- sun -->
-          <g id="sun"><circle r="34" fill="#FFD27A" opacity=".35"/><circle r="20" fill="#FFC24A"/></g>
-          <text id="altTxt" x="780" y="24" font-size="14" fill="#2B3F51" text-anchor="end" font-weight="700"></text>
-        </svg>
-      </div>
-      <div class="sim-ctl">
-        <label for="season">季節（お昼12時ごろの太陽）</label>
-        <input type="range" id="season" min="0" max="100" value="100" aria-valuetext="冬至">
-        <div class="season"><span>夏至</span><span>春分・秋分</span><span>冬至</span></div>
-        <div class="chips"><button data-v="0">夏</button><button data-v="50">春・秋</button><button data-v="100">冬</button><button id="playBtn">▶ 1年を再生</button></div>
-        <div class="meter">
-          <div><small>2階の床にできる日だまり</small><b id="m2">-</b></div>
-          <div><small>北側の部屋まで届く光</small><b id="mN">-</b></div>
-        </div>
-        <p class="sim-note" id="simNote"></p>
-      </div>
     </div>
   </div>
 </section>
@@ -990,81 +897,6 @@ $$('#gear button').forEach(b => b.addEventListener('click', () => {
     sel.length < 3 ? `${sel.map(x=>x.textContent).join('・')}、土間ならそのまましまえます。` :
     sel.length < 6 ? 'まだまだ入ります。実際の広さは見学会で！' : '全部しまえちゃう…？ ぜひ実物で確かめてください！';
 }));
-
-/* ---------- 遊べる仕掛け：光のシミュレーター ---------- */
-const LAT = 38.27, PX_M = 47;   // 1m ≒ 47px（イメージ）
-const solids = [
-  {x:20,y:130,w:110,h:210},              // 南側の建物
-  {x:162,y:140,w:198,h:10},{x:470,y:140,w:218,h:10}, // 屋根（バルコニー上は空いている）
-  {x:170,y:240,w:510,h:8, slab:true},     // 2階の床
-  {x:170,y:150,w:8,h:10},{x:170,y:235,w:8,h:35},{x:170,y:330,w:8,h:10}, // 南の壁（窓以外）
-  {x:672,y:150,w:8,h:190}                 // 北の壁
-];
-const raysG = $('#rays'), litG = $('#lit'), sunG = $('#sun'), sky = $('#simSky');
-const NS = 'http://www.w3.org/2000/svg';
-function hitRect(ox, oy, dx, dy, r){
-  let t0 = -Infinity, t1 = Infinity;
-  if (dx === 0) { if (ox < r.x || ox > r.x + r.w) return null; }
-  else { let a = (r.x - ox)/dx, b = (r.x + r.w - ox)/dx; if (a > b) [a,b] = [b,a]; t0 = Math.max(t0,a); t1 = Math.min(t1,b); }
-  let a = (r.y - oy)/dy, b = (r.y + r.h - oy)/dy; if (a > b) [a,b] = [b,a]; t0 = Math.max(t0,a); t1 = Math.min(t1,b);
-  return (t1 >= t0 && t0 > 0) ? t0 : null;
-}
-function simulate(v){
-  const dec = 23.44 * Math.cos(Math.PI * v / 100);
-  const alt = 90 - LAT + dec, rad = alt * Math.PI / 180;
-  const dx = Math.cos(rad), dy = Math.sin(rad);
-  let d = '', lit2 = [], lit1 = [];
-  for (let x0 = -900; x0 < 800; x0 += 6) {
-    const ox = x0, oy = -10;
-    let tBest = (340 - oy) / dy, hit = null;
-    solids.forEach(r => { const t = hitRect(ox, oy, dx, dy, r); if (t !== null && t < tBest) { tBest = t; hit = r; } });
-    const hx = ox + dx * tBest, hy = oy + dy * tBest;
-    if (hx < -20 && hy < 0) continue;
-    d += `M${ox.toFixed(1)} ${oy}L${hx.toFixed(1)} ${hy.toFixed(1)}`;
-    if (hit && hit.slab && Math.abs(hy - 240) < .5 && hx > 178 && hx < 672 && !(hx >= 360 && hx <= 470)) lit2.push(hx);
-    if (!hit && hx > 178 && hx < 672) lit1.push(hx);
-  }
-  raysG.innerHTML = '';
-  const p = document.createElementNS(NS,'path');
-  p.setAttribute('d', d); p.setAttribute('stroke','#FFB21E'); p.setAttribute('stroke-width','2'); p.setAttribute('stroke-opacity','.5'); p.setAttribute('stroke-linecap','round'); p.setAttribute('fill','none');
-  raysG.appendChild(p);
-  // 日だまり
-  litG.innerHTML = '';
-  const addPools = (arr, y) => arr.forEach(x => {
-    const r = document.createElementNS(NS,'rect');
-    r.setAttribute('x', x - 3.5); r.setAttribute('y', y - 6); r.setAttribute('width', 7); r.setAttribute('height', 6);
-    r.setAttribute('fill', '#FFC24A'); r.setAttribute('opacity', '.85'); litG.appendChild(r);
-  });
-  addPools(lit2, 240); addPools(lit1, 340);
-  // 太陽
-  let tS = Math.min((450 - 30) / dx, (300 - 30) / dy);
-  sunG.setAttribute('transform', `translate(${450 - dx*tS},${300 - dy*tS})`);
-  $('#altTxt').textContent = `太陽の高さ ${Math.round(alt)}°`;
-  sky.style.background = `linear-gradient(180deg, hsl(${205 - v*.15} ${55 - v*.1}% ${72 - v*.06}%), hsl(${40 + (100-v)*.6} 60% ${88 - v*.04}%) 75%)`;
-  // 数字
-  const len2 = lit2.length * 6; // 光1本あたり床6px分
-  const north = lit2.filter(x => x > 470).length * 6;
-  $('#m2').innerHTML = `${(len2 / PX_M).toFixed(1)}<span>m</span>`;
-  $('#mN').innerHTML = north > 0 ? `${(north / PX_M).toFixed(1)}<span>m</span>` : `0<span>m</span>`;
-  $('#season').setAttribute('aria-valuetext', v > 75 ? '冬' : v < 25 ? '夏' : '春・秋');
-  $('#simNote').textContent =
-    v > 75 ? '冬は太陽が低く、光が横から差し込みます。バルコニーを通った光が、北側の部屋の奥まで届いて日だまりに。' :
-    v < 25 ? '夏は太陽が高く、屋根が強い日差しをさえぎります。光はバルコニーに落ちて、室内は涼しく保たれます。' :
-             '春と秋は、南の窓とバルコニーの両方から、やわらかな光がリビングに入ります。';
-}
-const season = $('#season');
-season.addEventListener('input', () => simulate(+season.value));
-$$('.chips button[data-v]').forEach(b => b.addEventListener('click', () => { stopPlay(); season.value = b.dataset.v; simulate(+b.dataset.v); }));
-let playId = null;
-function stopPlay(){ if (playId) { cancelAnimationFrame(playId); playId = null; $('#playBtn').textContent = '▶ 1年を再生'; } }
-$('#playBtn').addEventListener('click', () => {
-  if (playId) return stopPlay();
-  $('#playBtn').textContent = '■ とめる';
-  let t0 = performance.now();
-  const step = now => { const v = 50 + 50 * Math.cos((now - t0) / 1800); season.value = v; simulate(v); playId = requestAnimationFrame(step); };
-  playId = requestAnimationFrame(step);
-});
-simulate(100);
 
 /* ---------- ギャラリーの拡大 ---------- */
 const items = $$('.gal-item'), lb = $('#lb'), lbImg = $('img', lb);
